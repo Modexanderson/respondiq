@@ -5,8 +5,13 @@ __pycache__/
 
 # Environment
 .env
+.env.production
 *.env.local
 firebase-credentials.json
+serviceAccountKey.json
+env.yaml
+venv/
+.firebase/
 
 # Build output
 dist/

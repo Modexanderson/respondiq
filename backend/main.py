@@ -49,7 +49,7 @@ async def startup():
     from services.storage import init_firebase
     init_firebase()
     print("\n  Respondiq API ready!")
-    print("  Docs: http://localhost:8000/docs\n")
+    print("  Docs: http://localhost:8001/docs\n")
 
 
 @app.get("/")
@@ -64,4 +64,4 @@ async def health():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8001, reload=True)

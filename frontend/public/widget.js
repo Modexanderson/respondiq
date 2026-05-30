@@ -20,7 +20,7 @@
   var API_BASE = script.getAttribute("data-api") || script.src.replace("/widget.js", "").replace(/\/+$/, "");
   // If API_BASE looks like a CDN/hosting URL, use the backend URL instead
   if (API_BASE.includes("web.app") || API_BASE.includes("firebaseapp")) {
-    API_BASE = "https://respondiq-api.run.app"; // Cloud Run backend
+    API_BASE = "https://respondiq-api-171849161041.us-central1.run.app"; // Cloud Run backend
   }
 
   var config = null;

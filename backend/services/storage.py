@@ -27,7 +27,9 @@ def init_firebase():
         })
     else:
         # Use default credentials (for Cloud Run)
-        _app = firebase_admin.initialize_app()
+        _app = firebase_admin.initialize_app(options={
+            "storageBucket": "respond-iq.firebasestorage.app",
+        })
 
     _db = firestore.client()
     _bucket = storage.bucket()

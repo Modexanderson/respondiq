@@ -1,10 +1,10 @@
 """
 Embedding service using sentence-transformers.
-Runs on RTX 4070 GPU for fast embedding generation.
+Auto-detects GPU (local) or falls back to CPU (Cloud Run).
 """
 
 from sentence_transformers import SentenceTransformer
-import numpy as np
+import torch
 
 # all-MiniLM-L6-v2: fast, good quality, 384-dim vectors
 _model: SentenceTransformer | None = None
@@ -13,8 +13,9 @@ _model: SentenceTransformer | None = None
 def get_model() -> SentenceTransformer:
     global _model
     if _model is None:
-        _model = SentenceTransformer("all-MiniLM-L6-v2", device="cuda")
-        print("[embeddings] Model loaded on GPU")
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        _model = SentenceTransformer("all-MiniLM-L6-v2", device=device)
+        print(f"[embeddings] Model loaded on {device}")
     return _model
 
 
